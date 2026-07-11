@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JZ Multimedia Solutions | Building Creativity. Delivering Excellence.</title>
+  <!-- SEO Meta -->
+  <meta name="description" content="JZ Multimedia Solutions – Professional painting services with honesty and quality. A growing startup committed to excellence." />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="JZ Multimedia Solutions" />
+  <meta property="og:description" content="Professional painting services and future multimedia solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jzmultimedia.com" />
+  <!-- Bootstrap 5, Font Awesome, Google Fonts, AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JZ Multimedia Solutions",
+      "url": "https://jzmultimedia.com",
+      "logo": "https://jzmultimedia.com/images/logo.png",
+      "description": "Professional painting services and future multimedia solutions.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9876543210",
+        "contactType": "Sales",
+        "areaServed": "IN"
+      }
+    }
+  </script>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #0B0B0B; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; }
+
+    /* ===== COLOR VARIABLES ===== */
+    :root { --black: #0B0B0B; --gold: #D4AF37; --gold-light: #e4c65a; --white: #ffffff; --gray-light: #f8f8f8; --gray-muted: #6c757d; }
+    .text-gold { color: var(--gold) !important; }
+    .bg-gold { background-color: var(--gold) !important; }
+    .bg-dark-light { background-color: #f2f2f2; }
+
+    /* ===== BUTTONS ===== */
+    .btn-gold { background: var(--gold); color: var(--black); border: 2px solid var(--gold); font-weight: 600; padding: 12px 32px; border-radius: 50px; transition: all 0.3s ease; }
+    .btn-gold:hover { background: transparent; color: var(--gold); border-color: var(--gold); }
+    .btn-outline-gold { background: transparent; color: var(--gold); border: 2px solid var(--gold); font-weight: 600; padding: 12px 32px; border-radius: 50px; transition: all 0.3s ease; }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--black); }
+
+    /* ===== LOADING SCREEN ===== */
+    .loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease, visibility 0.8s ease; }
+    .loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo span { font-size: 3rem; font-weight: 700; color: var(--gold); letter-spacing: 4px; }
+    .loader-bar { width: 200px; height: 4px; background: #333; margin-top: 20px; border-radius: 4px; overflow: hidden; }
+    .loader-progress { width: 0%; height: 100%; background: var(--gold); animation: loaderProgress 1.8s ease forwards; }
+    @keyframes loaderProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+    /* ===== HEADER ===== */
+    #navbar { background: rgba(11, 11, 11, 0.92); backdrop-filter: blur(12px); padding: 10px 0; transition: all 0.3s ease; border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
+    #navbar .navbar-brand { font-weight: 700; font-size: 1.5rem; }
+    .brand-gold { color: var(--gold); }
+    .brand-white { color: var(--white); }
+    .brand-tagline { font-size: 0.75rem; font-weight: 300; color: var(--gray-muted); margin-left: 10px; }
+    #navbar .nav-link { color: rgba(255, 255, 255, 0.7); font-weight: 500; padding: 8px 18px; transition: color 0.3s ease; cursor: pointer; }
+    #navbar .nav-link:hover, #navbar .nav-link.active { color: var(--gold); }
+
+    /* ===== HERO ===== */
+    .hero-section { min-height: 100vh; background: var(--black); position: relative; padding: 120px 0 60px; overflow: hidden; }
+    .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.08), transparent 70%); pointer-events: none; }
+    .hero-section h1 { color: var(--white); }
+    .hero-section .lead { color: rgba(255, 255, 255, 0.8); }
+    .hero-badge { display: inline-block; background: rgba(212, 175, 55, 0.15); color: var(--gold); padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.5px; }
+    .hero-illustration i { filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.2)); }
+    .scroll-indicator a { color: var(--gold); font-size: 1.5rem; animation: bounceDown 2s infinite; display: inline-block; }
+    @keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+    /* ===== PAGE HERO (inner sections) ===== */
+    .page-hero { min-height: 40vh; background: var(--black); color: var(--white); padding: 120px 0 60px; border-bottom: 2px solid rgba(212, 175, 55, 0.2); }
+    .page-hero h1 { font-size: 3rem; font-weight: 700; }
+    .page-hero .lead { color: rgba(255, 255, 255, 0.7); }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
+    .section-title .badge { font-size: 0.8rem; vertical-align: middle; }
+
+    /* ===== STRENGTH CARDS ===== */
+    .strength-card { background: var(--white); border-radius: 16px; padding: 20px 12px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.04); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.04); }
+    .strength-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: var(--gold); }
+    .strength-card i { font-size: 1.8rem; color: var(--gold); display: block; margin-bottom: 10px; }
+    .strength-card span { font-weight: 500; font-size: 0.95rem; }
+
+    /* ===== PROCESS STEPS ===== */
+    .process-step { background: var(--white); padding: 18px 8px; border-radius: 14px; font-weight: 500; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s ease; }
+    .process-step span { display: block; font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+    .process-step:hover { transform: scale(1.03); background: var(--gold); color: var(--black); }
+    .process-step:hover span { color: var(--black); }
+
+    /* ===== SERVICE CARDS ===== */
+    .service-card { background: var(--white); padding: 20px 12px; border-radius: 14px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s ease; border: 1px solid #eee; }
+    .service-card i { font-size: 2rem; color: var(--gold); display: block; margin-bottom: 8px; }
+    .service-card span { font-weight: 500; }
+    .service-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+
+    /* ===== FUTURE CARDS ===== */
+    .future-card { background: rgba(255,255,255,0.6); backdrop-filter: blur(4px); padding: 16px 10px; border-radius: 14px; text-align: center; border: 1px dashed var(--gold); transition: all 0.3s ease; }
+    .future-card i { font-size: 1.6rem; color: var(--gold); display: block; margin-bottom: 6px; }
+    .future-card span { font-weight: 400; font-size: 0.9rem; }
+    .future-card:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .future-card:hover i { color: var(--black); }
+
+    /* ===== GLASS CARD ===== */
+    .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+
+    /* ===== VALUE PILL ===== */
+    .value-pill { background: var(--white); padding: 12px 8px; border-radius: 50px; text-align: center; font-weight: 500; border: 1px solid #e0e0e0; transition: all 0.3s ease; }
+    .value-pill:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+    /* ===== GALLERY ===== */
+    .gallery-item { border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s ease; }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-placeholder { background: #eaeaea; min-height: 240px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #888; padding: 20px; }
+    .gallery-placeholder i { color: var(--gold); margin-bottom: 10px; }
+    .gallery-placeholder span { font-weight: 500; }
+
+    /* ===== MAP PLACEHOLDER ===== */
+    .map-placeholder { min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #f0f0f0; border-radius: 16px; }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 50px 0 20px; }
+    .footer h5, .footer h6 { color: var(--white); font-weight: 600; }
+    .footer ul { list-style: none; padding: 0; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul li a { color: rgba(255,255,255,0.6); transition: color 0.3s ease; }
+    .footer ul li a:hover { color: var(--gold); }
+    .social-icons a { display: inline-block; width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 50%; text-align: center; line-height: 38px; color: var(--white); margin-right: 8px; transition: all 0.3s ease; }
+    .social-icons a:hover { background: var(--gold); color: var(--black); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 30px; font-size: 0.9rem; }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 50px; height: 50px; padding: 0; display: none; background: var(--gold); color: var(--black); border: none; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4); transition: all 0.3s ease; border-radius: 50%; }
+    #backToTop:hover { transform: translateY(-4px); background: var(--gold-light); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 991px) {
+      .hero-section { padding: 100px 0 40px; min-height: auto; }
+      .hero-section h1 { font-size: 2.6rem; }
+      .hero-illustration i { font-size: 4rem !important; }
+      .page-hero { min-height: 30vh; padding: 100px 0 40px; }
+      .page-hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      #navbar .navbar-brand { font-size: 1.2rem; }
+      .brand-tagline { display: none; }
+    }
+    @media (max-width: 576px) {
+      .hero-section h1 { font-size: 2rem; }
+      .hero-section .lead { font-size: 1rem; }
+      .btn-gold, .btn-outline-gold { padding: 10px 24px; font-size: 0.9rem; }
+      .strength-card, .service-card, .future-card { padding: 14px 8px; }
+      .strength-card i, .service-card i { font-size: 1.4rem; }
+      .process-step { padding: 12px 4px; font-size: 0.85rem; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.5rem; }
+      .footer .col-md-4, .footer .col-md-2, .footer .col-md-3 { text-align: center; }
+      .social-icons { justify-content: center; }
+      .footer ul { padding-left: 0; }
+      #backToTop { width: 44px; height: 44px; bottom: 20px; right: 20px; }
+      .gallery-placeholder { min-height: 160px; }
+    }
+
+    /* Page sections hidden by default, shown when active */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="loader" class="loading-screen">
+    <div class="loader-logo"><span>JZ</span></div>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+  </div>
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#" onclick="showPage('home')">
+        <span class="brand-gold">JZ</span><span class="brand-white">Multimedia</span>
+        <span class="brand-tagline d-none d-md-inline">Building Creativity. Delivering Excellence.</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" data-page="home" onclick="showPage('home')">Home</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="about" onclick="showPage('about')">About</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="services" onclick="showPage('services')">Services</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="gallery" onclick="showPage('gallery')">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE: HOME ===== -->
+  <section id="page-home" class="page-section active">
+    <!-- HERO -->
+    <section class="hero-section d-flex align-items-center">
+      <div class="hero-overlay"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center">
+          <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+            <span class="hero-badge">New Startup · Building Trust</span>
+            <h1 class="display-3 fw-bold">Welcome to <br /><span class="text-gold">JZ Multimedia Solutions</span></h1>
+            <p class="lead mt-3">Professional Painting Services with Honesty, Quality, and Attention to Detail. As we grow, we aim to expand into Interior Solutions, Construction Support, Digital Marketing, Branding, and Creative Multimedia Services.</p>
+            <div class="mt-4 d-flex flex-wrap gap-3">
+              <a href="#" onclick="showPage('contact')" class="btn btn-gold btn-lg">Get a Free Quote</a>
+              <a href="#" onclick="showPage('services')" class="btn btn-outline-gold btn-lg">Explore Services</a>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-duration="1000">
+            <div class="hero-illustration">
+              <i class="fas fa-paint-roller fa-8x text-gold"></i>
+              <i class="fas fa-brush fa-5x text-gold ms-3"></i>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator text-center mt-5">
+          <a href="#intro-home" onclick="document.getElementById('intro-home').scrollIntoView({behavior:'smooth'})"><i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section id="intro-home" class="py-5 bg-dark-light">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 class="text-gold">Honest. Professional. Growing.</h2>
+        <p class="lead mx-auto" style="max-width:800px;">JZ Multimedia Solutions is a newly established company created with a vision of providing reliable and professional services across multiple industries. We begin with painting and aim to become your complete solutions partner.</p>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Why Choose Us</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Real strengths, transparent values</p>
+        <div class="row g-4">
+          <div class="col-md-3 col-6" data-aos="zoom-in"><div class="strength-card"><i class="fas fa-comments"></i><span>Professional Communication</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="50"><div class="strength-card"><i class="fas fa-tag"></i><span>Transparent Pricing</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100"><div class="strength-card"><i class="fas fa-clipboard-list"></i><span>Attention to Detail</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="150"><div class="strength-card"><i class="fas fa-check-double"></i><span>Quality Materials</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200"><div class="strength-card"><i class="fas fa-handshake"></i><span>Customer First</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="250"><div class="strength-card"><i class="fas fa-broom"></i><span>Clean Work</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300"><div class="strength-card"><i class="fas fa-headset"></i><span>Reliable Support</span></div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="350"><div class="strength-card"><i class="fas fa-chart-line"></i><span>Continuous Improvement</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="py-5 bg-dark-light">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Our Working Process</h2>
+        <div class="row mt-4 g-3 text-center">
+          <div class="col-md-3 col-6" data-aos="fade-up"><div class="process-step"><span>1</span> Enquiry</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="50"><div class="process-step"><span>2</span> Consultation</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100"><div class="process-step"><span>3</span> Quotation</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150"><div class="process-step"><span>4</span> Planning</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200"><div class="process-step"><span>5</span> Execution</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="250"><div class="process-step"><span>6</span> Inspection</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300"><div class="process-step"><span>7</span> Completion</div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="350"><div class="process-step"><span>8</span> Support</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (home) -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="accordion mt-4" id="faqHome" data-aos="fade-up">
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1" aria-expanded="true">What painting services do you offer?</button></h2><div id="f1" class="accordion-collapse collapse show"><div class="accordion-body">Interior, exterior, residential, commercial, texture, waterproof, wood polish, and more.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2" aria-expanded="false">How do I get a quotation?</button></h2><div id="f2" class="accordion-collapse collapse"><div class="accordion-body">Contact us via form, call, or WhatsApp. We arrange a site visit and provide transparent pricing.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3" aria-expanded="false">Do you provide materials or should I arrange?</button></h2><div id="f3" class="accordion-collapse collapse"><div class="accordion-body">We recommend quality materials; we can supply or advise – transparent cost breakdown.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4" aria-expanded="false">What areas do you serve?</button></h2><div id="f4" class="accordion-collapse collapse"><div class="accordion-body">Currently focusing on [your city/region] – contact us for specific service areas.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5" aria-expanded="false">Are you insured?</button></h2><div id="f5" class="accordion-collapse collapse"><div class="accordion-body">As a startup we follow best safety practices; we will provide insurance details upon request.</div></div></div>
+        </div>
+        <div class="text-center mt-3"><a href="#" onclick="showPage('contact')" class="btn btn-outline-gold">View all FAQs</a></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PAGE: ABOUT ===== -->
+  <section id="page-about" class="page-section">
+    <section class="page-hero d-flex align-items-center">
+      <div class="container text-center">
+        <h1 data-aos="fade-up">About Us</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Building trust through honest work and quality service.</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2 class="text-gold">Who We Are</h2>
+            <p>JZ Multimedia Solutions is a newly established company created with a vision of providing reliable and professional services across multiple industries.</p>
+            <p>We are beginning our journey by focusing on high-quality painting services for homes, apartments, villas, offices, and commercial spaces.</p>
+            <p>Our long-term vision is to grow into a complete solutions company offering interior services, construction support, branding, digital marketing, website development, photography, videography, and movie production.</p>
+            <p>As a startup, we believe every customer is important. Our focus is on honesty, quality workmanship, transparent communication, and continuous improvement. We are committed to earning trust one project at a time.</p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="bg-light rounded-4 p-5 text-center" style="min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+              <i class="fas fa-building fa-5x text-gold mb-3"></i>
+              <p class="text-muted">JZ Multimedia Solutions – Building trust from day one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-dark-light">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="glass-card p-4 text-center">
+              <i class="fas fa-bullseye fa-3x text-gold mb-3"></i>
+              <h3>Our Mission</h3>
+              <p>To provide reliable, affordable, and high-quality services while building lasting relationships through honesty, professionalism, and customer satisfaction.</p>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card p-4 text-center">
+              <i class="fas fa-eye fa-3x text-gold mb-3"></i>
+              <h3>Our Vision</h3>
+              <p>To become a trusted company known for creativity, quality, integrity, and innovative solutions across construction, interiors, digital media, and multimedia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Our Core Values</h2>
+        <div class="row g-3 mt-3">
+          <div class="col-md-3 col-6" data-aos="zoom-in"><div class="value-pill">Honesty</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="50"><div class="value-pill">Integrity</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100"><div class="value-pill">Professionalism</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="150"><div class="value-pill">Quality</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200"><div class="value-pill">Customer Satisfaction</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="250"><div class="value-pill">Transparency</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300"><div class="value-pill">Innovation</div></div>
+          <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="350"><div class="value-pill">Continuous Learning</div></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PAGE: SERVICES ===== -->
+  <section id="page-services" class="page-section">
+    <section class="page-hero d-flex align-items-center">
+      <div class="container text-center">
+        <h1 data-aos="fade-up">Our Services</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Professional painting today – expanding to complete solutions tomorrow.</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Professional Painting Services</h2>
+        <p class="text-center text-muted mb-4" data-aos="fade-up">Currently our core offering – delivered with quality and care.</p>
+        <div class="row g-4">
+          <div class="col-md-4 col-6" data-aos="fade-up"><div class="service-card"><i class="fas fa-home"></i><span>Interior Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="service-card"><i class="fas fa-building"></i><span>Exterior Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="service-card"><i class="fas fa-bed"></i><span>Residential Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><div class="service-card"><i class="fas fa-store"></i><span>Commercial Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="200"><div class="service-card"><i class="fas fa-city"></i><span>Apartment Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="250"><div class="service-card"><i class="fas fa-chalet"></i><span>Villa Painting</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="300"><div class="service-card"><i class="fas fa-fill-drip"></i><span>Wall Putty</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="350"><div class="service-card"><i class="fas fa-layer-group"></i><span>Primer</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="400"><div class="service-card"><i class="fas fa-paint-brush"></i><span>Texture Paint</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="450"><div class="service-card"><i class="fas fa-water"></i><span>Waterproof Coating</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="500"><div class="service-card"><i class="fas fa-tree"></i><span>Wood Polish</span></div></div>
+          <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="550"><div class="service-card"><i class="fas fa-cogs"></i><span>Metal Painting</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-dark-light">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Future Services <span class="badge bg-gold ms-2">Coming Soon</span></h2>
+        <p class="text-center text-muted mb-4" data-aos="fade-up">Expanding our expertise to offer complete solutions.</p>
+        <div class="row g-3">
+          <div class="col-md-3 col-6" data-aos="fade-up"><div class="future-card"><i class="fas fa-pencil-ruler"></i><span>Interior Design</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="50"><div class="future-card"><i class="fas fa-hard-hat"></i><span>Construction Support</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100"><div class="future-card"><i class="fas fa-chess-board"></i><span>False Ceiling</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150"><div class="future-card"><i class="fas fa-bolt"></i><span>Electrical</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200"><div class="future-card"><i class="fas fa-wrench"></i><span>Plumbing</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="250"><div class="future-card"><i class="fas fa-th-large"></i><span>Tiles</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300"><div class="future-card"><i class="fas fa-laptop-code"></i><span>Website Development</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="350"><div class="future-card"><i class="fas fa-bullhorn"></i><span>Digital Marketing</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400"><div class="future-card"><i class="fas fa-paint-bucket"></i><span>Branding</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="450"><div class="future-card"><i class="fas fa-camera"></i><span>Photography</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="500"><div class="future-card"><i class="fas fa-video"></i><span>Videography</span></div></div>
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="550"><div class="future-card"><i class="fas fa-film"></i><span>Movie Production</span></div></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PAGE: GALLERY ===== -->
+  <section id="page-gallery" class="page-section">
+    <section class="page-hero d-flex align-items-center">
+      <div class="container text-center">
+        <h1 data-aos="fade-up">Service Inspiration</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Images shown are for inspiration and demonstration purposes only.</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Interior Painting Ideas</span></div></div></div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Exterior Painting Ideas</span></div></div></div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Modern Wall Finishes</span></div></div></div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Commercial Spaces</span></div></div></div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Luxury Homes</span></div></div></div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500"><div class="gallery-item"><div class="gallery-placeholder"><i class="fas fa-image fa-4x"></i><span>Office Interiors</span></div></div></div>
+        </div>
+        <div class="text-center mt-4 text-muted small">Images shown are for illustration and inspiration purposes.</div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PAGE: CONTACT ===== -->
+  <section id="page-contact" class="page-section">
+    <section class="page-hero d-flex align-items-center">
+      <div class="container text-center">
+        <h1 data-aos="fade-up">Get in Touch</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Reach out for a free quote or any enquiries.</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2 class="text-gold">Send an Enquiry</h2>
+            <form id="contactForm" novalidate>
+              <div class="mb-3"><label for="name" class="form-label">Full Name</label><input type="text" class="form-control" id="name" placeholder="Your name" required /></div>
+              <div class="mb-3"><label for="phone" class="form-label">Phone Number</label><input type="tel" class="form-control" id="phone" placeholder="Your phone" required /></div>
+              <div class="mb-3"><label for="email" class="form-label">Email</label><input type="email" class="form-control" id="email" placeholder="your@email.com" required /></div>
+              <div class="mb-3"><label for="service" class="form-label">Service Required</label><select class="form-select" id="service"><option>Interior Painting</option><option>Exterior Painting</option><option>Residential Painting</option><option>Commercial Painting</option><option>Other</option></select></div>
+              <div class="mb-3"><label for="message" class="form-label">Message</label><textarea class="form-control" id="message" rows="4" placeholder="Tell us about your project..."></textarea></div>
+              <button type="submit" class="btn btn-gold w-100">Send Enquiry <i class="fas fa-arrow-right ms-2"></i></button>
+            </form>
+            <div class="mt-3 d-flex gap-3">
+              <a href="#" class="btn btn-outline-gold flex-fill"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+              <a href="tel:+919876543210" class="btn btn-outline-gold flex-fill"><i class="fas fa-phone me-2"></i>Call Now</a>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <h3>Business Hours</h3>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-clock text-gold me-2"></i>Mon – Sat: 9:00 AM – 7:00 PM</li>
+              <li><i class="fas fa-clock text-gold me-2"></i>Sunday: Closed</li>
+            </ul>
+            <h3 class="mt-4">Service Areas</h3>
+            <p>Currently serving [Your City] and surrounding areas. Contact us to confirm.</p>
+            <div class="map-placeholder mt-3 p-4 bg-light rounded-4 text-center">
+              <i class="fas fa-map-marked-alt fa-3x text-gold"></i>
+              <p class="mt-2">Google Map placeholder – <br />Add your location here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL FAQ -->
+    <section class="py-5 bg-dark-light">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="accordion mt-4" id="faqFull" data-aos="fade-up">
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">What painting services do you offer?</button></h2><div id="q1" class="accordion-collapse collapse show"><div class="accordion-body">Interior, exterior, residential, commercial, texture, waterproof, wood polish, metal painting, and more.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">How do I get a quotation?</button></h2><div id="q2" class="accordion-collapse collapse"><div class="accordion-body">Fill the contact form, call us, or WhatsApp. We'll arrange a site visit and provide transparent pricing.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Do you supply materials?</button></h2><div id="q3" class="accordion-collapse collapse"><div class="accordion-body">We can supply quality materials or work with yours – we provide a clear cost breakdown.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4">What areas do you cover?</button></h2><div id="q4" class="accordion-collapse collapse"><div class="accordion-body">Currently [Your City] and nearby areas. Contact us for specific locations.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5">Are you insured?</button></h2><div id="q5" class="accordion-collapse collapse"><div class="accordion-body">We follow safety best practices; insurance details available upon request.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q6">How long does a painting project take?</button></h2><div id="q6" class="accordion-collapse collapse"><div class="accordion-body">Depends on size and scope. We provide a timeline during consultation.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q7">Do you offer warranties?</button></h2><div id="q7" class="accordion-collapse collapse"><div class="accordion-body">Yes, we stand behind our work. Warranty terms shared with quotation.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q8">Can you match existing paint colors?</button></h2><div id="q8" class="accordion-collapse collapse"><div class="accordion-body">Yes, we can color-match for seamless touch-ups or extensions.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q9">Do you do commercial projects?</button></h2><div id="q9" class="accordion-collapse collapse"><div class="accordion-body">Absolutely – offices, retail, restaurants, and other commercial spaces.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q10">What is the payment schedule?</button></h2><div id="q10" class="accordion-collapse collapse"><div class="accordion-body">Typically 50% advance and 50% upon completion. Flexible terms available.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q11">Do you offer free estimates?</button></h2><div id="q11" class="accordion-collapse collapse"><div class="accordion-body">Yes, site visits and quotations are free of charge.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q12">Do you clean up after painting?</button></h2><div id="q12" class="accordion-collapse collapse"><div class="accordion-body">Yes, we leave the site clean and tidy after completion.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q13">What kind of paint do you use?</button></h2><div id="q13" class="accordion-collapse collapse"><div class="accordion-body">We use premium, eco-friendly, and durable paints from trusted brands.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q14">Can you do textured or specialty finishes?</button></h2><div id="q14" class="accordion-collapse collapse"><div class="accordion-body">Yes, we offer texture, stucco, metallic, and other specialty finishes.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q15">How do I prepare for painting?</button></h2><div id="q15" class="accordion-collapse collapse"><div class="accordion-body">We guide you on preparation – moving furniture, covering floors, etc.</div></div></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5><span class="text-gold">JZ</span> Multimedia Solutions</h5>
+          <p>Building Creativity. Delivering Excellence. Honest, professional services from a growing startup.</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h6>Quick Links</h6>
+          <ul><li><a href="#" onclick="showPage('home')">Home</a></li><li><a href="#" onclick="showPage('about')">About</a></li><li><a href="#" onclick="showPage('services')">Services</a></li><li><a href="#" onclick="showPage('gallery')">Gallery</a></li><li><a href="#" onclick="showPage('contact')">Contact</a></li></ul>
+        </div>
+        <div class="col-md-3">
+          <h6>Current Services</h6>
+          <ul><li>Professional Painting</li><li>Interior / Exterior</li><li>Residential & Commercial</li><li>Texture & Waterproof</li></ul>
+        </div>
+        <div class="col-md-3">
+          <h6>Future Services</h6>
+          <ul><li>Interior Design</li><li>Construction Support</li><li>Digital Marketing</li><li>Branding & Media</li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p>© 2026 JZ Multimedia Solutions. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="backToTop" class="btn btn-gold btn-lg rounded-circle" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // ===== LOADING SCREEN =====
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        setTimeout(function() { loader.classList.add('hidden'); }, 500);
+      }
+    });
+
+    // ===== PAGE NAVIGATION =====
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      // Show target page
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+      // Update nav links
+      document.querySelectorAll('#mainNav .nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-page') === pageId) {
+          link.classList.add('active');
+        }
+      });
+      // Close mobile menu
+      const navCollapse = document.getElementById('mainNav');
+      if (navCollapse.classList.contains('show')) {
+        const toggler = document.querySelector('.navbar-toggler');
+        if (toggler) toggler.click();
+      }
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Re-init AOS for new content
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    }
+
+    // ===== BACK TO TOP =====
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        backBtn.style.display = 'block';
+      } else {
+        backBtn.style.display = 'none';
+      }
+    });
+    backBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ===== CONTACT FORM =====
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (name && phone && email) {
+          alert('Thank you, ' + name + '! Your enquiry has been sent. We will get back to you soon.');
+          form.reset();
+        } else {
+          alert('Please fill in all required fields.');
+        }
+      });
+    }
+
+    // ===== INIT AOS =====
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 40,
+        easing: 'ease-out-cubic'
+      });
+    }
+
+    // ===== ACTIVE NAV ON LOAD =====
+    document.addEventListener('DOMContentLoaded', function() {
+      showPage('home');
+    });
+  </script>
+
+</body>
+</html>
